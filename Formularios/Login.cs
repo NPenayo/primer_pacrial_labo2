@@ -26,13 +26,13 @@ namespace Formularios
         private void btnAdmin_Click(object sender, EventArgs e)
         {
             txtUser.Text = Mock.LoginAdmin().Id;
-            txtPass.Text = Mock.LoginAdmin().Password;
+            txtPass.Text = "VivaLaPep4";
         }
 
         private void btnEmpleado_Click(object sender, EventArgs e)
         {
             txtUser.Text = Mock.LoginEmpleado().Id;
-            txtPass.Text = Mock.LoginEmpleado().Password;
+            txtPass.Text = "Pepito2568";
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -43,11 +43,19 @@ namespace Formularios
             }
             else
             {
-                Program.logueado = Seguridad.Credenciales(Mock.Empleados, txtUser.Text, txtPass.Text);
+                Program.logueado = Seguridad.Credenciales(Mock.Empleados, txtUser.Text, Seguridad.EncriptarPassword(txtPass.Text));
                 if (Program.logueado is not null)
                 {
-                    MenuPadre menu = new MenuPadre();
-                    menu.Show();
+                    if (Program.logueado is Administrador)
+                    {
+                        MenuAdmin menuadm = new();
+                        menuadm.Show();
+                    }
+                    else
+                    {
+                        MenuEmpleados menuemp = new();
+                        menuemp.Show();
+                    }
                 }
                 else
                 {

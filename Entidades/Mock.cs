@@ -9,22 +9,15 @@ namespace Entidades
     public static class Mock
     {
         private static List<Empleado> empleados;
-        private static Dictionary<int, Mesa> mesas;
-        private static List<Pedido> pedidos;
-        private static Dictionary<Item, int> items;
-        private static List<Componente> componentes;
 
         public static List<Empleado> Empleados { get { return empleados; } }
-        public static Dictionary<int, Mesa> Mesas { get { return mesas; } }
-        public static List<Pedido> Pedidos { get { return pedidos; } }
-        public static Dictionary<Item, int> Items { get { return items; } }
-        public static List<Componente> Componentes { get { return componentes; } }
 
         public static void Iniciar()
         {
             CargarEmpleados();
-            CargarPedidos();
+            CargarComponentes();
             CargarMesas();
+            CargarPedidos();
         }
         public static void CargarEmpleados()
         {
@@ -36,52 +29,98 @@ namespace Entidades
         }
         public static void CargarMesas()
         {
-            mesas = new Dictionary<int, Mesa>();
-            mesas.Add(01, new Mesa(Mesa.ETipo.Mesa));
-            mesas.Add(02, new Mesa(Mesa.ETipo.Mesa));
-            mesas.Add(03, new Mesa(Mesa.ETipo.Mesa));
-            mesas.Add(04, new Mesa(Mesa.ETipo.Mesa));
-            mesas.Add(05, new Mesa(Mesa.ETipo.Mesa));
-            mesas.Add(06, new Mesa(Mesa.ETipo.Mesa));
-            mesas.Add(07, new Mesa(Mesa.ETipo.Mesa));
-            mesas.Add(08, new Mesa(Mesa.ETipo.Mesa));
-            mesas.Add(09, new Mesa(Mesa.ETipo.Mesa));
-            mesas.Add(10, new Mesa(Mesa.ETipo.Mesa));
-            mesas.Add(11, new Mesa(Mesa.ETipo.Mesa));
-            mesas.Add(12, new Mesa(Mesa.ETipo.Mesa));
-            mesas.Add(13, new Mesa(Mesa.ETipo.Mesa));
-            mesas.Add(14, new Mesa(Mesa.ETipo.Mesa));
-            mesas.Add(15, new Mesa(Mesa.ETipo.Mesa));
-            mesas.Add(16, new Mesa(Mesa.ETipo.Barra));
-            mesas.Add(17, new Mesa(Mesa.ETipo.Barra));
-            mesas.Add(18, new Mesa(Mesa.ETipo.Barra));
-            mesas.Add(19, new Mesa(Mesa.ETipo.Barra));
-            mesas.Add(20, new Mesa(Mesa.ETipo.Barra));
+            
+            Salon.AgregarMesa(01, new Mesa(Mesa.ETipo.Mesa));
+            Salon.AgregarMesa(02, new Mesa(Mesa.ETipo.Mesa));
+            Salon.AgregarMesa(03, new Mesa(Mesa.ETipo.Mesa));
+            Salon.AgregarMesa(04, new Mesa(Mesa.ETipo.Mesa));
+            Salon.AgregarMesa(05, new Mesa(Mesa.ETipo.Mesa));
+            Salon.AgregarMesa(06, new Mesa(Mesa.ETipo.Mesa));
+            Salon.AgregarMesa(07, new Mesa(Mesa.ETipo.Mesa));
+            Salon.AgregarMesa(08, new Mesa(Mesa.ETipo.Mesa));
+            Salon.AgregarMesa(09, new Mesa(Mesa.ETipo.Mesa));
+            Salon.AgregarMesa(10, new Mesa(Mesa.ETipo.Mesa));
+            Salon.AgregarMesa(11, new Mesa(Mesa.ETipo.Mesa));
+            Salon.AgregarMesa(12, new Mesa(Mesa.ETipo.Mesa));
+            Salon.AgregarMesa(13, new Mesa(Mesa.ETipo.Mesa));
+            Salon.AgregarMesa(14, new Mesa(Mesa.ETipo.Mesa));
+            Salon.AgregarMesa(15, new Mesa(Mesa.ETipo.Mesa));
+            Salon.AgregarMesa(16, new Mesa(Mesa.ETipo.Barra));
+            Salon.AgregarMesa(17, new Mesa(Mesa.ETipo.Barra));
+            Salon.AgregarMesa(18, new Mesa(Mesa.ETipo.Barra));
+            Salon.AgregarMesa(19, new Mesa(Mesa.ETipo.Barra));
+            Salon.AgregarMesa(20, new Mesa(Mesa.ETipo.Barra));
         }
         public static void CargarPedidos()
         {
-            pedidos = new List<Pedido>();
+            Salon.Mesas[3].AbrirMesa();
+            Salon.Mesas[16].AbrirMesa();
+            Pedido p1 = new Pedido(Empleados[0], Salon.Mesas[3]);
+            Pedido p2 = new Pedido(Empleados[0], Salon.Mesas[3]);
+            Pedido p3 = new Pedido(Empleados[1], Salon.Mesas[16]);
+            p1.AgregarItem(Item.ObtenerPorNombre("Hamburguesa Completa"), 1);
+            p2.AgregarItem(Item.ObtenerPorNombre("Destornillador"), 1);
+            p3.AgregarItem(Item.ObtenerPorNombre("Pinta Stout"), 2);
+            Salon.Mesas[3].CargarPedido(p1);
+            Salon.Mesas[3].CargarPedido(p2);
+            Salon.Mesas[16].CargarPedido(p3);
+        }
+        private static void CargarItems()
+        {
+            Item i1 = new Item("Hamburguesa Completa", 750,Item.ETipo.Comida);
+            Item i2 = new Item("Coca de 150cc.", 200, Item.ETipo.Bebida);
+            Item i3 = new Item("Hamburguesa Vegana", 700, Item.ETipo.Comida);
+            Item i4 = new Item("Pinta Scotish", 500,Item.ETipo.Bebida);
+            Item i5 = new Item("Pinta Honey", 500, Item.ETipo.Bebida);
+            Item i6 = new Item("Pinta Stout", 500, Item.ETipo.Bebida);
+            Item i7 = new Item("Destornillador", 550, Item.ETipo.Bebida);
+            Item i8 = new Item("Pizza Napolitana", 650,Item.ETipo.Comida);
+
+
+            i1.AgregarReceta(Componente.ObtenerPorNombre("Pan de hamburguesa"), Componente.ObtenerPorNombre("Medallon de carne"), Componente.ObtenerPorNombre("Queso cheddar"), Componente.ObtenerPorNombre("Panceta"));
+            i2.AgregarReceta(Componente.ObtenerPorNombre("Coca Cola"));
+            i3.AgregarReceta(Componente.ObtenerPorNombre("Pan de hamburguesa"), Componente.ObtenerPorNombre("Medallon vegano"));
+            i4.AgregarReceta(Componente.ObtenerPorNombre("Cerveza Scotish"));
+            i5.AgregarReceta(Componente.ObtenerPorNombre("Cerveza Honey"));
+            i6.AgregarReceta(Componente.ObtenerPorNombre("Cerveza Stout"));
+            i7.AgregarReceta(Componente.ObtenerPorNombre("Fanta"), Componente.ObtenerPorNombre("Smirnoff"));
+            i8.AgregarReceta(Componente.ObtenerPorNombre("Prepizza"), Componente.ObtenerPorNombre("Mozzarella"));
+
+            Inventario.AgregarItem(i1);
+            Inventario.AgregarItem(i2);
+            Inventario.AgregarItem(i3);
+            Inventario.AgregarItem(i4);
+            Inventario.AgregarItem(i5);
+            Inventario.AgregarItem(i6);
+            Inventario.AgregarItem(i7);
+            Inventario.AgregarItem(i8);
+
+        }
+        public static void CargarComponentes()
+        {
+            Inventario.AgregarComponente(new Componente(150, "Coca Cola"));
+            Inventario.AgregarComponente(new Componente(500, "Pan de hamburguesa"));
+            Inventario.AgregarComponente(new Componente(1000, "Medallon de carne"));
+            Inventario.AgregarComponente(new Componente(50, "Cerveza Scotish"));
+            Inventario.AgregarComponente(new Componente(50, "Cerveza Honey"));
+            Inventario.AgregarComponente(new Componente(50, "Cerveza Stout"));
+            Inventario.AgregarComponente(new Componente(1, "Smirnoff"));
+            Inventario.AgregarComponente(new Componente(80, "Fanta"));
+            Inventario.AgregarComponente(new Componente(1000, "Queso cheddar"));
+            Inventario.AgregarComponente(new Componente(1000, "Panceta"));
+            Inventario.AgregarComponente(new Componente(500, "Medallon vegano"));
+            Inventario.AgregarComponente(new Componente(0, "Prepizza"));
+            Inventario.AgregarComponente(new Componente(0, "Mozzarella"));
+
+            CargarItems();
+
         }
         public static Administrador LoginAdmin()
         {
-            foreach (Empleado item in empleados)
-            {
-                if (item is Administrador)
-                {
-                    return (Administrador)item;
-                }
-            }
             return new Administrador("Admin", "Istrador", "04469135", "09/05/1810", "VivaLaPep4");
         }
         public static Empleado LoginEmpleado()
         {
-            foreach (Empleado item in empleados)
-            {
-                if (item is not Administrador)
-                {
-                    return item;
-                }
-            }
             return new Empleado("Robert", "Perez", "37456789", "26/05/1993", "Pepito2568");
         }
 

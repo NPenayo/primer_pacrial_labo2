@@ -21,27 +21,37 @@ namespace Entidades
 
         public int Stock { get { return stock; } set { stock = value; } }
         public string Nombre { get { return nombre; } set { nombre = value; } }
+        public string Id { get { return id; } }
+
 
         private string GenerarId()
         {
-            char[] letras = nombre.ToCharArray();
-            string id = $"{letras[0]}{letras[2]}";
+            string formateado = String.Concat(nombre.Where(c => !Char.IsWhiteSpace(c)));
+            char[] letras = formateado.ToCharArray();
+            string id = $"{letras[0]}{letras[letras.Length/2]}{letras[letras.Length-1]}";
             return id;
         }
-        public static int operator +(Componente comp, int stock)
+        public static Componente ObtenerPorNombre(string nombre)
         {
-            return comp.stock + stock;
+            foreach (Componente comp in Inventario.Componentes)
+            {
+                if (nombre == comp.Nombre)
+                {
+                    return comp;
+                }
+            }
+            return null;
         }
-        public static int operator -(Componente comp,int stock)
+        public static Componente ObtenerPorId(string id)
         {
-            if(comp.stock == 0 || comp.stock - stock < 0)
+            foreach (Componente comp in Inventario.Componentes)
             {
-                return 0;
+                if (id == comp.Id)
+                {
+                    return comp;
+                }
             }
-            else
-            {
-                return comp.stock - stock;
-            }
+            return null;
         }
     }
 }

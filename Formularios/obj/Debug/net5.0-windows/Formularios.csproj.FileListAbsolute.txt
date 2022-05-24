@@ -3,7 +3,6 @@ C:\Users\Nicolas\Documents\Repos\Bar UTN\Formularios\bin\Debug\net5.0-windows\Fo
 C:\Users\Nicolas\Documents\Repos\Bar UTN\Formularios\bin\Debug\net5.0-windows\Formularios.runtimeconfig.json
 C:\Users\Nicolas\Documents\Repos\Bar UTN\Formularios\bin\Debug\net5.0-windows\Formularios.runtimeconfig.dev.json
 C:\Users\Nicolas\Documents\Repos\Bar UTN\Formularios\bin\Debug\net5.0-windows\Formularios.dll
-C:\Users\Nicolas\Documents\Repos\Bar UTN\Formularios\bin\Debug\net5.0-windows\ref\Formularios.dll
 C:\Users\Nicolas\Documents\Repos\Bar UTN\Formularios\bin\Debug\net5.0-windows\Formularios.pdb
 C:\Users\Nicolas\Documents\Repos\Bar UTN\Formularios\obj\Debug\net5.0-windows\Formularios.csproj.AssemblyReference.cache
 C:\Users\Nicolas\Documents\Repos\Bar UTN\Formularios\obj\Debug\net5.0-windows\Formularios.Login.resources
@@ -21,3 +20,13 @@ C:\Users\Nicolas\Documents\Repos\Bar UTN\Formularios\bin\Debug\net5.0-windows\En
 C:\Users\Nicolas\Documents\Repos\Bar UTN\Formularios\bin\Debug\net5.0-windows\Entidades.pdb
 C:\Users\Nicolas\Documents\Repos\Bar UTN\Formularios\obj\Debug\net5.0-windows\Formularios.MenuPadre.resources
 C:\Users\Nicolas\Documents\Repos\Bar UTN\Formularios\obj\Debug\net5.0-windows\Formularios.csproj.CopyComplete
+C:\Users\Nicolas\Documents\Repos\Bar UTN\Formularios\obj\Debug\net5.0-windows\Formularios.MenuAdmin.resources
+C:\Users\Nicolas\Documents\Repos\Bar UTN\Formularios\obj\Debug\net5.0-windows\Formularios.MenuEmpleados.resources
+C:\Users\Nicolas\Documents\Repos\Bar UTN\Formularios\obj\Debug\net5.0-windows\refint\Formularios.dll
+C:\Users\Nicolas\Documents\Repos\Bar UTN\Formularios\obj\Debug\net5.0-windows\Formularios.FormSalon.resources
+C:\Users\Nicolas\Documents\Repos\Bar UTN\Formularios\obj\Debug\net5.0-windows\Formularios.Modales.ModalMesa.resources
+C:\Users\Nicolas\Documents\Repos\Bar UTN\Formularios\obj\Debug\net5.0-windows\Formularios.Modales.ModalPedido.resources
+C:\Users\Nicolas\Documents\Repos\Bar UTN\Formularios\obj\Debug\net5.0-windows\Formularios.Modales.ModalCantidad.resources
+C:\Users\Nicolas\Documents\Repos\Bar UTN\Formularios\obj\Debug\net5.0-windows\Formularios.Secciones.FormInventario.resources
+C:\Users\Nicolas\Documents\Repos\Bar UTN\Formularios\obj\Debug\net5.0-windows\Formularios.Secciones.FormUsuarios.resources
+C:\Users\Nicolas\Documents\Repos\Bar UTN\Formularios\obj\Debug\net5.0-windows\Formularios.Modales.ModalInventario.resources

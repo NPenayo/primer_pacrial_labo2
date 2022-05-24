@@ -11,7 +11,7 @@ namespace Entidades
         private List<Pedido> pedidos;
         private bool disponible;
         private ETipo tipoMesa;
-        private decimal total;
+        private MedioDePago medioPago;
         public enum ETipo
         {
             Mesa,
@@ -23,19 +23,17 @@ namespace Entidades
             Credito,
             Efectivo
         }
-        private Mesa()
+        public Mesa(ETipo tipo)
         {
             pedidos = new List<Pedido>();
-        }
-        public Mesa(ETipo tipo) : this()
-        {
             Tipo = tipo;
+            Disponible = true;
         }
 
         public List<Pedido> Pedidos { get { return pedidos; } }
         public bool Disponible { get { return disponible; } set { disponible = value; } }
-        public decimal Total { get { return total; } }
         public ETipo Tipo { get { return tipoMesa; } set { tipoMesa = value; } }
+        public MedioDePago MedioPago { get {return medioPago; } set { medioPago = value; } }
 
         public bool AbrirMesa()
         {
@@ -51,6 +49,7 @@ namespace Entidades
             if (!Disponible)
             {
                 Disponible = true;
+                Pedidos.Clear();
                 return Disponible;
             }
             return Disponible;
@@ -69,21 +68,18 @@ namespace Entidades
                 }
             }
         }
-        public decimal CalcularTotal(MedioDePago medioDePago, bool estacionamiento)
+        public decimal CalcularTotal(bool estacionamiento)
         {
             decimal total = 0;
             decimal parcial = 0;
             foreach (Pedido pedido in pedidos)
             {
-                foreach (KeyValuePair<Item, int> item in pedido.Items)
-                {
-                    parcial += item.Value * item.Key.Precio;
-                }
+                parcial += pedido.CalcularParcial();
             }
             total = parcial;
-            if (medioDePago is MedioDePago.Credito)
+            if (MedioPago is MedioDePago.Credito)
             {
-                total = parcial + parcial + (10 / 100 * parcial);
+                total = total + (10*total/100);
             }
             if (estacionamiento)
             {

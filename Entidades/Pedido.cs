@@ -12,17 +12,19 @@ namespace Entidades
         private string id;
         private Empleado empleado;
         private Dictionary<Item, int> items;
+        private Mesa.ETipo tipoMesa;
 
         private Pedido()
         {
             items = new Dictionary<Item, int>();
             ultimoPedido++;
         }
-        public Pedido(Empleado empleado, Dictionary<Item, int> items, Mesa mesa) : this()
+        public Pedido(Empleado empleado, Mesa mesa) : this()
         {
             Empleado = empleado;
             Items = items;
             Id = EstablecerId(mesa);
+            tipoMesa = mesa.Tipo;
         }
         public Empleado Empleado
         {
@@ -47,21 +49,22 @@ namespace Entidades
             }
         }
         public string Id { get { return id; } private set { id = value; } }
+        public Mesa.ETipo TipoMesa { get { return tipoMesa; } }
         public string EstablecerId(Mesa mesa)
         {
             int nroMesa = 0;
             StringBuilder sb = new StringBuilder();
             string tipoMesa = mesa.Tipo.ToString();
             sb.AppendLine($"{tipoMesa.Substring(0, 3)}");
-            foreach (KeyValuePair<int, Mesa> mesas in Salon.Mesas)
+            foreach (KeyValuePair<int,Mesa> item in Salon.Mesas)
             {
-                if (mesas.Value == mesa)
+                if(item.Value == mesa)
                 {
-                    nroMesa = mesas.Key;
+                    nroMesa = item.Key;
                 }
             }
             sb.Append($"{nroMesa}");
-            sb.Append($"{ultimoPedido++}");
+            sb.Append($"{ultimoPedido}");
             return sb.ToString();
         }
         public void AgregarItem(Item item, int cantidad)
@@ -76,14 +79,15 @@ namespace Entidades
         {
             Items.Remove(item);
         }
-        public void EditarItem(Item item, int cantidad)
+        public decimal CalcularParcial()
         {
-            if (Items.ContainsKey(item))
+            decimal parcial = 0;
+
+            foreach (KeyValuePair<Item, int> item in Items)
             {
-                Items[item] = cantidad;
-
+                parcial += item.Value * item.Key.Precio;
             }
+            return parcial;
         }
-
     }
 }

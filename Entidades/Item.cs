@@ -6,34 +6,37 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public abstract class Item
+    public class Item
     {
         private string id;
         private string nombre;
-        private List<Componente> componentes;
         private decimal precio;
-        private double disponible;
-        public enum Tipo
+        private bool disponible;
+        private List<Componente> listaComponentes;
+        private ETipo tipoProducto;
+        public enum ETipo
         {
             Comida,
             Bebida
         }
         private Item()
         {
-            componentes = new List<Componente>();
+            listaComponentes = new List<Componente>();
             precio = 0;
         }
-        public Item(string nombre, decimal precio, List<Componente> componentes) : this()
+        public Item(string nombre, decimal precio,ETipo tipo) : this()
         {
             Nombre = nombre;
             Precio = precio;
+            tipoProducto = tipo;
             id = GenerarId();
         }
         public string Id { get { return id; } }
         public string Nombre { get { return nombre; } set { nombre = value; } }
-        internal List<Componente> Componentes { get { return componentes; } }
         public decimal Precio { get { return precio; } set { if (value > 0) { precio = value; } } }
-        public double Disponible { get { return disponible; } }
+        public bool Disponible { get { return disponible; } }
+        public List<Componente> Receta { get { return listaComponentes; } }
+        public ETipo TipoProducto { get { return tipoProducto; } }
 
         private string GenerarId()
         {
@@ -44,13 +47,57 @@ namespace Entidades
         }
         public bool EstaDisponible()
         {
+            this.disponible = true;
+            foreach (Componente comp in Receta)
+            {
+                if (comp.Stock == 0)
+                {
+                    this.disponible = false;
+                }
+            }
+            return Disponible;
+        }
+        public void AgregarReceta(params Componente[] componentes)
+        {
             foreach (Componente comp in componentes)
             {
-                if(comp.Stock == 0)
+                listaComponentes.Add(comp);
+            }
+        }
+        public static Item ObtenerPorNombre(string nombre)
+        {
+            foreach (Item item in Inventario.Items)
+            {
+                if (nombre == item.Nombre)
                 {
+                    return item;
+                }
+            }
+            return null;
+        }
+        public static Item ObtenerPorId(string id)
+        {
+            foreach (Item item in Inventario.Items)
+            {
+                if (id == item.Id)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
+        public static bool operator -(Item item, int cantidad)
+        {
+            foreach (Componente comp in item.Receta)
+            {
+                Inventario.RestarStock(comp, cantidad);
+                if (comp.Stock < 0)
+                {
+                    Inventario.SumarStock(comp, cantidad);
                     return false;
                 }
             }
+
             return true;
         }
     }

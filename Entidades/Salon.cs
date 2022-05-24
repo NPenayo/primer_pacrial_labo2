@@ -16,7 +16,7 @@ namespace Entidades
 
         public static void AgregarMesa(int numeroMesa, Mesa mesa)
         {
-            if (mesas.ContainsKey(numeroMesa))
+            if (!mesas.ContainsKey(numeroMesa))
             {
                 mesas.Add(numeroMesa, mesa);
             }

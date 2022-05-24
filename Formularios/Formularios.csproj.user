@@ -1,10 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Compile Update="Modales\ModalCantidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Modales\ModalInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Modales\ModalPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Secciones\FormInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Secciones\FormSalon.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="MenuPadre.cs">
+    <Compile Update="Menus\MenuAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Menus\MenuEmpleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Menus\MenuPadre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Modales\ModalMesa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Secciones\FormUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

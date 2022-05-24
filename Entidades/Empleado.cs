@@ -35,8 +35,8 @@ namespace Entidades
         private string GenerarId()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"{Nombre[0]}{Apellido[0]}{Dni.Substring(5, 3)}");
-            return sb.ToString();
+            sb.AppendLine($"{Nombre[0]}{Apellido[0]}{Dni.Substring(5,3)}");
+            return sb.ToString().Trim();
         }
 
 
