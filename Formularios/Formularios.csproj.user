@@ -4,6 +4,9 @@
     <Compile Update="Modales\ModalCantidad.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Modales\ModalEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Modales\ModalInventario.cs">
       <SubType>Form</SubType>
     </Compile>

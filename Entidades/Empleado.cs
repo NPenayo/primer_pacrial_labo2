@@ -38,7 +38,17 @@ namespace Entidades
             sb.AppendLine($"{Nombre[0]}{Apellido[0]}{Dni.Substring(5,3)}");
             return sb.ToString().Trim();
         }
-
+        public static Empleado ObtenerPorId(string Id)
+        {
+            foreach (Empleado empleado in Mock.Empleados)
+            {
+                if(empleado.Id == Id)
+                {
+                    return empleado;
+                }
+            }
+            return null;
+        }
 
     }
 }

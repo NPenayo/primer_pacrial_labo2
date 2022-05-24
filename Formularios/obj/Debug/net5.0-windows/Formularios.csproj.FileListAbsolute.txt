@@ -30,3 +30,4 @@ C:\Users\Nicolas\Documents\Repos\Bar UTN\Formularios\obj\Debug\net5.0-windows\Fo
 C:\Users\Nicolas\Documents\Repos\Bar UTN\Formularios\obj\Debug\net5.0-windows\Formularios.Secciones.FormInventario.resources
 C:\Users\Nicolas\Documents\Repos\Bar UTN\Formularios\obj\Debug\net5.0-windows\Formularios.Secciones.FormUsuarios.resources
 C:\Users\Nicolas\Documents\Repos\Bar UTN\Formularios\obj\Debug\net5.0-windows\Formularios.Modales.ModalInventario.resources
+C:\Users\Nicolas\Documents\Repos\Bar UTN\Formularios\obj\Debug\net5.0-windows\Formularios.Modales.ModalEmpleado.resources
